@@ -43,7 +43,11 @@ font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
 
 # --- ЗВУКИ ---
+mixer.init()
+mixer.music.load("sounds/spaceship.wav")
+mixer.music.play(-1)
 
+hit_sound = mixer.Sound("sounds/FX01.aif")
 # --- ГРА ---
 game_over = False
 winner = None
@@ -101,8 +105,7 @@ while True:
                 pass
             if game_state['sound_event'] == 'platform_hit':
                 # звук відбиття м'ячика від платформи
-                pass
-
+                hit_sound.play()
     else:
         wating_text = font_main.render(f"Очікування гравців...", True, (255, 255, 255))
         screen.blit(wating_text, (WIDTH // 2 - 25, 20))
